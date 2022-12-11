@@ -81,15 +81,17 @@ function PeriodoInfo(props){
                 <label className="form-label">Periodo di Riferimento</label>
                 <div className="row mb-3">
                     <div className="col-md-7">                        
-                        <select name="mese" id="mesi" className="form-select" onChange={(e) => {
+                        <select name="mese" id="mesi" className="form-select" value={monthrif} onChange={(e) => {
                             console.log(e.target.value);
                             setdata(e.target.value+'-2022');                         
                             console.log(data);                        
                         }}>
                         {month.map((val,index) => {
-                           const isSelected = monthrif === (1+index);
-                           return <option className={isSelected ? 'option_selected' : ''} value={index+1} key={index} selected={isSelected} >{val}</option>
-                        })}                                                                                                          
+                           return <option
+                               className={monthrif === ( 1 + index ) ? 'option_selected' : ''}
+                               value={index+1}
+                               key={index}>{val}</option>
+                        })}
                         </select>    
                     </div>
                     <div className="col-md-5">                        
