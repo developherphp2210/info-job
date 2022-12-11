@@ -88,7 +88,7 @@ function PeriodoInfo(props){
                         }}>
                         {month.map((val,index) => {
                            const isSelected = monthrif === index;
-                           return <option value={index+1} key={index} selected={isSelected} >{val}</option>
+                           return <option className={isSelected ? 'option_selected' : ''} value={index+1} key={index} selected={isSelected} >{val}</option>
                         })}                                                                                                          
                         </select>    
                     </div>
