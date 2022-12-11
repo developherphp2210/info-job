@@ -72,7 +72,7 @@ function PeriodoInfo(props){
     console.log(props.data);
     const [data,setdata] = useState(props.data);
     console.log(data);
-    const monthrif = data.split('-')[0];
+    const monthrif = Number.parseInt(data.split('-')[0]);
     console.log(monthrif);
 
     return (
