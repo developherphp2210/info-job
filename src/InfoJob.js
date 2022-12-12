@@ -45,6 +45,9 @@ function RequestJob(props){
 }       
 
 function TableInfo(props){
+
+    console.log(props.data);
+
     return (
         <div className="col-xl-9 border border-primary rounded mb-3">
             <table className="table">
@@ -68,26 +71,24 @@ function TableInfo(props){
     )
 }
 
-function PeriodoInfo(props){
-    console.log(props.data);
-    const [data,setdata] = useState(props.data);
-    console.log(data);
-    const monthrif = data.slice(1,data.indexOf('-')-1);
-    console.log(monthrif);
-
+function PeriodoInfo(props){    
+    const [data,setdata] = useState(props.data);    
+    // const monthrif = data.slice(1,data.indexOf('-')-1);
+    // const monthrif = data.split('-')[0];
+    const monthrif = Number.parseInt(data.split('-')[0]);
     return (
         <div className="col-xl-3">                                
             <div className="border border-info rounded p-3">
                 <label className="form-label">Periodo di Riferimento</label>
                 <div className="row mb-3">
                     <div className="col-md-7">                        
-                        <select name="mese" id="mesi" className="form-select" onChange={(e) => {
-                            console.log(e.target.value);
-                            setdata(e.target.value+'-2022');                         
-                            console.log(data);                        
+                        <select name="mese" id="mesi" className="form-select" onChange={(e) => {                            
+                            setdata(e.target.value+'-2022'); 
+                            <TableInfo data={data} />                                                    
                         }}>
                         {month.map((val,index) => {
-                           return <option value={index+1} key={index} selected={(monthrif===index)?'true':'false'} >{val}</option>
+                            const isSelected = (monthrif === 1+index) ? true : false;
+                            return <option className={isSelected ? 'option_selected' : ''} value={index+1} key={index} selected={isSelected} >{val}</option>                        
                         })}                                                                                                          
                         </select>    
                     </div>
