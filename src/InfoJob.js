@@ -46,10 +46,10 @@ function RequestJob(props){
     const handleHide = () => {
         setShow(false);
     }
+  
+//    const url = '/request/request.php?action=select&data='+props.data;
 
-//    const url = './request/request.php?action=select&data='+props.data;
-
-   const response = [{"id":"38","data":"2022-12-02","ora_ini":"09:40:00","ora_fine":"00:00:00","prezzo":"23.3333","ore":"03:20:00"},{"id":"39","data":"2022-12-05","ora_ini":"09:40:00","ora_fine":"13:30:00","prezzo":"26.8333","ore":"03:50:00"},{"id":"40","data":"2022-12-07","ora_ini":"09:40:00","ora_fine":"12:50:00","prezzo":"22.1667","ore":"03:10:00"}];
+  const response = [{"id":"38","data":"2022-12-02","ora_ini":"09:40:00","ora_fine":"00:00:00","prezzo":"23.3333","ore":"03:20:00"},{"id":"39","data":"2022-12-05","ora_ini":"09:40:00","ora_fine":"13:30:00","prezzo":"26.8333","ore":"03:50:00"},{"id":"40","data":"2022-12-07","ora_ini":"09:40:00","ora_fine":"12:50:00","prezzo":"22.1667","ore":"03:10:00"}];
    
    function Create_Data(Newdata){
        const now = new Date(Newdata);                      
@@ -66,7 +66,7 @@ function RequestJob(props){
 //    return fetch(url)
 //    .then( res => res.json())
 //    .then((response) => {
-    return response.map((ele,index) => {       
+      return response.map((ele,index) => {       
            return (
                <tr key={index}>
                <td>{Create_Data(ele.data)}</td>
@@ -181,7 +181,7 @@ function PeriodoInfo(props){
                 <label className="form-label">Periodo di Riferimento</label>
                 <div className="row mb-3">
                     <div className="col-md-7">                        
-                        <select name="mese" id="mesi" className="form-select" onChange={(e) => {                            
+                        <select name="mese" id="mesi" className="form-select" value={monthrif} onChange={(e) => {                            
                             setdata(e.target.value+'-2022'); 
                             <TableInfo data={data} />                                                    
                         }}>
