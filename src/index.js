@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const now = new Date();
 let ControlData = `${(now.getMonth() + 1)}-${now.getFullYear()}`;
-console.log(ControlData);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
