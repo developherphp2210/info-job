@@ -5,14 +5,15 @@ import { Modal,Button,Form } from "react-bootstrap";
 export default function MainInfo(props){
 
     const [show,setShow] = useState(false);
-    const [ora,setOra] = useState(new Date());
+    const [data_ora,setData_ora] = useState(new Date());
     const [valdata,setValdata] = useState(props.newdata);            
     const monthrif = Number.parseInt(valdata.split('-')[0]);
+    const yearrif = valdata.substr(valdata.indexOf('-')+1,4);
     const month = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
-    let tot_prezzo = 0;
+    
 
     const handleShow = () => {
-        setOra(new Date());        
+        setData_ora(new Date());        
         setShow(true);
     }
 
@@ -20,11 +21,17 @@ export default function MainInfo(props){
         setShow(false);
     }
 
-    const handleChange = (e) => {
-        setValdata(e.target.value+'-2022');  
-        console.log('change_Data'+valdata); 
-        utility.RequestJob(valdata);                                                               
+    const handleChangeMonth = (e) => {
+        setValdata(e.target.value+'-'+yearrif);          
+        // utility.RequestJob(valdata);                                                               
     }
+
+    const handleChangeYear = (e) => {
+        setValdata(monthrif+'-'+e.target.value);          
+        // utility.RequestJob(valdata);                                                               
+    }
+
+    const request = utility.RequestJob(valdata);
 
     const TableInfo = (
         <div className="col-xl-9 border border-primary rounded mb-3">
@@ -39,7 +46,7 @@ export default function MainInfo(props){
                     </tr>
                 </thead>
                 <tbody>
-                {utility.RequestJob(valdata) }
+                {request[0]}
                 </tbody>
             </table>
             <div className="my-3">
@@ -53,11 +60,11 @@ export default function MainInfo(props){
                 <Modal.Body>                    
                     <Form.Group className="mb-3" controlId="group1">
                         <Form.Label>Data</Form.Label>
-                        <Form.Control type="date" name="data" id="data_lavoro" value={utility.Create_Data_App(ora)} required  />
+                        <Form.Control type="date" name="data" id="data_lavoro" value={utility.Create_Data_App(data_ora)} required  />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="group2">
                         <Form.Label>Ora inizio</Form.Label>
-                        <Form.Control type="time" name="ora_ini" id="oraini" value={utility.Create_Time(ora)} required />
+                        <Form.Control type="time" name="ora_ini" id="oraini" value={utility.Create_Time(data_ora)} required />
                     </Form.Group>                    
                 </Modal.Body>
                 <Modal.Footer>
@@ -79,7 +86,7 @@ export default function MainInfo(props){
                 <label className="form-label">Periodo di Riferimento</label>
                 <div className="row mb-3">
                     <div className="col-md-7">                        
-                        <select name="mese" id="mesi" className="form-select" value={monthrif} onChange={handleChange} >
+                        <select name="mese" id="mesi" className="form-select" value={monthrif} onChange={handleChangeMonth} >
                         {month.map((val,index) => {
                             const isSelected = (monthrif === 1+index) ? true : false;
                             return <option className={isSelected ? 'option_selected' : ''} value={index+1} key={index} selected={isSelected} >{val}</option>                        
@@ -87,13 +94,13 @@ export default function MainInfo(props){
                         </select>    
                     </div>
                     <div className="col-md-5">                        
-                        <select name="anno" id="anni" className="form-select">
+                        <select name="anno" id="anni" className="form-select" value={yearrif} onChange={handleChangeYear}>
                             <option value="2022">2022</option>
                             <option value="2023">2023</option>
                         </select>
                     </div>
                 </div>
-                {/* <p className="form-label" id="incasso">Totale Importo: {parseFloat(tot_prezzo / 2).toFixed(2).replace('.',',')}</p>  */}
+                <p className="form-label" id="incasso">Totale Importo: {parseFloat(request[1]).toFixed(2).replace('.',',')}</p> 
             </div>                                
         </div>
     )

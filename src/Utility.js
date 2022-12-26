@@ -1,6 +1,8 @@
 import { useState} from "react";
 import { Modal,Button,Form } from "react-bootstrap";
 
+var tot_prezzo = 0;
+
 export function Create_Time(now){
     const Ora = String(now.getHours());
     const Minuti = String(now.getMinutes());
@@ -13,6 +15,7 @@ export function Create_Data_App(now){
     return now.getFullYear()+'-'+(Mese.length===1?'0'+Mese:Mese)+'-'+(Day.length===1?'0'+Day:Day); 
 }
 
+
 function Create_Data(Newdata){
     const now = new Date(Newdata);                      
     const Day = String(now.getDate()); 
@@ -20,13 +23,17 @@ function Create_Data(Newdata){
     return (Day.length===1?'0'+Day:Day)+'/'+(Mese.length===1?'0'+Mese:Mese)+'/'+now.getFullYear();                        
 }
 
-function Gestione_Prezzo(prezzo){
-    // tot_prezzo += parseFloat(prezzo); 
-    return parseFloat(prezzo).toFixed(2).replace('.',','); 
-}
 
-export function RequestJob(periodo){   
 
+export function RequestJob(periodo){ 
+
+    let tot_prezzo = 0;
+
+    function Gestione_Prezzo(prezzo){     
+        tot_prezzo += parseFloat(prezzo);
+        return parseFloat(prezzo).toFixed(2).replace('.',','); 
+    }
+    
     const [show,setShow] = useState(false);
     const [ora,setOra] = useState(new Date());
 
@@ -49,7 +56,7 @@ export function RequestJob(periodo){
 //    return fetch(url)
 //    .then( res => res.json())
 //    .then((response) => {
-      return response.map((ele,index) => {       
+      return [response.map((ele,index) => {       
            return (
                <tr key={index}>
                <td>{Create_Data(ele.data)}</td>               
@@ -79,10 +86,10 @@ export function RequestJob(periodo){
                 </Modal>
                 </td>:<td>{ele.ora_fine}</td>}         
                {(ele.ora_fine==="00:00:00")?<td>0,00</td>:<td>{Gestione_Prezzo(ele.prezzo)}</td>}               
-               {(ele.ora_fine==="00:00:00")?<td>0</td>:<td>{ele.ore}</td>}                            
+               {(ele.ora_fine==="00:00:00")?<td>0</td>:<td>{ele.ore}</td>}                                       
                </tr>               
            );
-       });
+       }),tot_prezzo];
     // });
 }       
 
