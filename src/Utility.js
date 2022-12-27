@@ -93,6 +93,6 @@ export function Gestione_Prezzo(prezzo){
 //            );
 //        }),tot_prezzo];
 //     // });
-}       
+// }       
 
 
