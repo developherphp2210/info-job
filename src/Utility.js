@@ -16,11 +16,16 @@ export function Create_Data_App(now){
 }
 
 
-function Create_Data(Newdata){
+export function Create_Data(Newdata){
     const now = new Date(Newdata);                      
     const Day = String(now.getDate()); 
     const Mese = String(now.getMonth()+1);
     return (Day.length===1?'0'+Day:Day)+'/'+(Mese.length===1?'0'+Mese:Mese)+'/'+now.getFullYear();                        
+}
+
+export function Gestione_Prezzo(prezzo){     
+    tot_prezzo += parseFloat(prezzo);
+    return parseFloat(prezzo).toFixed(2).replace('.',','); 
 }
 
 
@@ -29,10 +34,7 @@ export function RequestJob(periodo){
 
     let tot_prezzo = 0;
 
-    function Gestione_Prezzo(prezzo){     
-        tot_prezzo += parseFloat(prezzo);
-        return parseFloat(prezzo).toFixed(2).replace('.',','); 
-    }
+    
     
     const [show,setShow] = useState(false);
     const [ora,setOra] = useState(new Date());
@@ -67,7 +69,7 @@ export function RequestJob(periodo){
                     <Modal.Header>
                         <Modal.Title>Orario di Fine Lavoro</Modal.Title>
                     </Modal.Header>
-                    <Form>
+                    <Form action="/request/request.php?action=confirm" method="post">
                         <Modal.Body>
                             <Form.Group className="mb-3">
                                 <Form.Label>Ora Fine</Form.Label>

@@ -33,6 +33,8 @@ export default function MainInfo(props){
 
     const request = utility.RequestJob(valdata);
 
+    console.log(__filename);
+
     const TableInfo = (
         <div className="col-xl-9 border border-primary rounded mb-3">
             <table className="table">
@@ -56,7 +58,7 @@ export default function MainInfo(props){
                 <Modal.Header closeButton>
                     <Modal.Title>Inserisci Nuovo Orario</Modal.Title>
                 </Modal.Header>
-                <Form action="/request/request.php?action=insert" method="post">
+                <Form action="./request/request.php?action=insert" method="post">
                 <Modal.Body>                    
                     <Form.Group className="mb-3" controlId="group1">
                         <Form.Label>Data</Form.Label>

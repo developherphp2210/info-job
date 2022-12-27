@@ -1,4 +1,4 @@
-import MainInfo from "./Component_Job";
+import MainInfo from "./mainInfo";
 
 
 export default function InfoJobMain(props){
