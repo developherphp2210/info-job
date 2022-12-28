@@ -2,10 +2,11 @@ import {MONTHS} from "./utility";
 
 export function PeriodoInfo(props) {
 
-    const monthRif = Number.parseInt(props.newdata.split('-')[0]);
-    const yearRif = props.newdata.substring(props.newdata.indexOf('-') + 1, 4);
+    const [monthRif, yearRif] = props.newdata.split('-');
 
-    const handleChangeMonth = (e) => props.onChange(e.target.value + '-' + yearRif)
+    const handleChangeMonth = (e) => {
+        props.onChange(e.target.value + '-' + yearRif)
+    }
     const handleChangeYear = (e) => props.onChange(monthRif + '-' + e.target.value)
 
     return <div className="col-xl-3">

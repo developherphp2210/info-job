@@ -8,15 +8,23 @@ export function SetInitialControlData(){
 }
 
 export function Create_Time(now){
-    const Ora = String(now.getHours());
-    const Minuti = String(now.getMinutes());
-    return (Ora.length===1?'0'+Ora:Ora)+':'+(Minuti.length===1?'0'+Minuti:Minuti);
+    if (now instanceof Date){
+        const Ora = String(now.getHours());
+        const Minuti = String(now.getMinutes());
+        return (Ora.length===1?'0'+Ora:Ora)+':'+(Minuti.length===1?'0'+Minuti:Minuti);
+    }
+    return now;
 }
 
-export function Create_Data_App(now){                      
-    const Day = String(now.getDate()); 
-    const Mese = String(now.getMonth()+1);            
-    return now.getFullYear()+'-'+(Mese.length===1?'0'+Mese:Mese)+'-'+(Day.length===1?'0'+Day:Day); 
+export function Create_Data_App(now){
+
+    if (now instanceof Date) {
+        const Day = String(now.getDate());
+        const Mese = String(now.getMonth()+1);
+        return now.getFullYear()+'-'+(Mese.length===1?'0'+Mese:Mese)+'-'+(Day.length===1?'0'+Day:Day);
+    }
+
+    return now
 }
 
 
