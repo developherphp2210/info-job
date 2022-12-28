@@ -1,7 +1,11 @@
-import { useState} from "react";
-import { Modal,Button,Form } from "react-bootstrap";
+let tot_prezzo = 0;
 
-var tot_prezzo = 0;
+export const MONTHS = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+
+export function SetInitialControlData(){
+    const now = new Date();
+    return `${(now.getMonth() + 1)}-${now.getFullYear()}`;
+}
 
 export function Create_Time(now){
     const Ora = String(now.getHours());
