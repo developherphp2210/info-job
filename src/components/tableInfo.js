@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
-import * as utility from "./utility";
-import {MyModal, MyModal2} from "./components/modals";
+import * as utility from "../utility";
+import {MyModal, MyModal2} from "./modals";
 
 export function TableInfo(props) {
 

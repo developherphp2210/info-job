@@ -1,4 +1,4 @@
-import MainInfo from "./mainInfo";
+import MainInfo from "./components/mainInfo";
 
 
 export default function InfoJobMain(){
