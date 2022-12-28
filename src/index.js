@@ -4,16 +4,13 @@ import './index.css';
 // import InfoJobMain from './InfoJob';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MainInfo from './mainInfo';
+import MainInfo from './components/mainInfo';
 
-const now = new Date();
-let ControlData = `${(now.getMonth() + 1)}-${now.getFullYear()}`;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <App /> */}
-    {/* <InfoJobMain data={ControlData} />     */}
-    <MainInfo data={ControlData}/>
+    <MainInfo />
   </React.StrictMode>
 );
 
