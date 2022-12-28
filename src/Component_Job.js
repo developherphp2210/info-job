@@ -1,5 +1,5 @@
 import { useState} from "react";
-import * as utility from "./Utility";
+import * as utility from "./utility";
 import { Modal,Button,Form } from "react-bootstrap";
 
 export default function MainInfo(props){

@@ -1,4 +1,4 @@
-import {MONTHS} from "./Utility";
+import {MONTHS} from "./utility";
 
 export function PeriodoInfo(props) {
 
