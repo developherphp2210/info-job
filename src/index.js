@@ -4,7 +4,7 @@ import './index.css';
 // import InfoJobMain from './InfoJob';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MainInfo from './mainInfo';
+import MainInfo from './components/mainInfo';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
