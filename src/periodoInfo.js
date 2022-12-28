@@ -7,7 +7,7 @@ export function PeriodoInfo(props){
     const [valdata,setValdata] = useState(props.newdata);   
 
     const monthrif = Number.parseInt(valdata.split('-')[0]);
-    const yearrif = valdata.substr(valdata.indexOf('-')+1,4);
+    const yearrif = valdata.substring(valdata.indexOf('-')+1,4);
     const month = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
 
     const handleChangeMonth = (e) => {
