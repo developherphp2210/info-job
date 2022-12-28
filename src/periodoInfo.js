@@ -20,7 +20,7 @@ export function PeriodoInfo(props){
         // utility.RequestJob(valdata);                                                               
     }
 
-    const info = (
+    return (
         <div className="col-xl-3">                                
             <div className="border border-info rounded p-3">
                 <label className="form-label">Periodo di Riferimento</label>
@@ -44,7 +44,5 @@ export function PeriodoInfo(props){
             </div>                                
         </div>
     )
-
- return info;
 }
     
