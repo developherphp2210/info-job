@@ -1,7 +1,7 @@
 import { TableInfo } from "./tableInfo";
 import { PeriodoInfo } from "./periodoInfo";
 import { useState, useEffect } from "react";
-import {SetInitialControlData} from "./Utility";
+import {SetInitialControlData} from "./utility";
 
 export default function MainInfo(props){
 
