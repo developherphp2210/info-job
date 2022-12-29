@@ -5,7 +5,7 @@ import { SetInitialControlData } from "./utility";
 
 export default function MainInfo(props){
 
-    const [data, setData] = useState(SetInitialControlData());
+    const [data, setData] = useState(SetInitialControlData());    
 
     return (
     <div className="container">

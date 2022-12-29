@@ -4,8 +4,6 @@ export function PeriodoInfo(props){
 
     console.log('PeriodoInfo');
 
-    // const [valdata,setValdata] = useState(props.newdata);   
-
     const monthRif = Number.parseInt(props.newdata.split('-')[0]);
     const yearRif = props.newdata.substring(props.newdata.indexOf('-')+1,4);
     
@@ -16,6 +14,8 @@ export function PeriodoInfo(props){
     const handleChangeYear = (e) => {
         props.onChange(monthRif+'-'+e.target.value);                  
     }
+
+    let tot_prezzo = localStorage.getItem('tot_prezzo');
 
     return (
         <div className="col-xl-3">                                
@@ -37,7 +37,7 @@ export function PeriodoInfo(props){
                         </select>
                     </div>
                 </div>
-                {/* <p className="form-label" id="incasso">Totale Importo: {parseFloat().toFixed(2).replace('.',',')}</p>  */}
+                <p className="form-label" id="incasso">Totale Importo: {parseFloat(tot_prezzo).toFixed(2).replace('.',',')}</p> 
             </div>                                
         </div>
     )
