@@ -24,7 +24,7 @@ switch ($_REQUEST['action']) {
             while ($row = $res->fetch_assoc()){
                 $result[]=$row;
             }
-        }        
+        }             
         echo json_encode($result);    
         break;
     }
