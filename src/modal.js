@@ -2,29 +2,37 @@ import { Modal,Button,Form } from "react-bootstrap";
 
 export function ModalEndJob(props) {
 
+    const headerEnd =  <Modal.Header>
+                        <Modal.Title>Orario di Fine Lavoro</Modal.Title>
+                    </Modal.Header>
 
+    const bodyEnd =    <Modal.Body>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Ora Fine</Form.Label>
+                            <Form.Control type="time" name="ora_fine" id="orafine" value={props.value_time} required />
+                        </Form.Group>
+                    </Modal.Body>
 
-    return <Modal show={props.show} onHide={props.hide}>
-        <Modal.Header>
-            <Modal.Title>Orario di Fine Lavoro</Modal.Title>
-        </Modal.Header>
-        <Form action="request/request.php?action=confirm" method="post">
-            <Modal.Body>
-                <Form.Group className="mb-3">
-                    <Form.Label>Ora Fine</Form.Label>
-                    <Form.Control type="time" name="ora_fine" id="orafine" value={props.value_time} required />
-                </Form.Group>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" type="button" onClick={props.hide}>
-                    Close
-                </Button>
-                <Button variant="primary" type="submit">
-                    Conferma
-                </Button>
-            </Modal.Footer>
-        </Form>
-    </Modal>
+    const footerEnd =  <Modal.Footer>
+                        <Button variant="secondary" type="button" onClick={props.hide}>
+                            Close
+                        </Button>
+                        <Button variant="primary" type="submit">
+                            Conferma
+                        </Button>
+                    </Modal.Footer>
+
+    const formEnd =    <Form action="request/request.php?action=confirm" method="post">
+                    {bodyEnd} 
+                    {footerEnd}
+                    </Form>
+
+    const modalEnd =   <Modal show={props.show} onHide={props.hide}>
+                    {headerEnd}
+                    {formEnd}
+                    </Modal>
+
+    return modalEnd;
 }
 
 export function ModalStartJob(props){
